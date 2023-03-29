@@ -1,6 +1,6 @@
 import NavBar from "../nav/NavBar";
-import FormInput from "../reusable/FormInput";
 import LoginIcon from "../svg/LoginIcon";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
@@ -10,7 +10,7 @@ const Login = () => {
         <LoginIcon />
         <p className="text-bold text-[#1f261e] pt-4">Log In</p>
 
-        <form action="#" className="pt-4">
+        <form action="#" className="pt-4 w-3/4">
           <form className="space-y-6" action="#">
             <div>
               <label
@@ -46,13 +46,13 @@ const Login = () => {
               type="submit"
               className="w-full text-white bg-[#47b518]  font-medium rounded-lg text-sm px-5 py-2.5 text-center"
             >
-              Login to your account
+              Login
             </button>
-            <div className="text-sm font-medium text-gray-900">
+            <div className="text-sm font-medium text-gray-900 text-center">
               New User?{" "}
-              <a href="#" className="text-[#47b518] hover:underline">
+              <Link to="/register" className="text-[#47b518] hover:underline">
                 Create account
-              </a>
+              </Link>
             </div>
           </form>
         </form>
