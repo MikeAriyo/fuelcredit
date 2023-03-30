@@ -1,5 +1,10 @@
 import { Link } from "react-router-dom";
+import Beneficiaries from "../svg/Beneficiaries";
+import Credit from "../svg/Credit";
 import Home from "../svg/Home";
+import Stations from "../svg/Stations";
+import UserStats from "../svg/Stats";
+import Wallet from "../svg/Wallet";
 
 const Route = () => {
   return (
@@ -23,7 +28,7 @@ const Route = () => {
           className={`flex justify-start lg:justify-center pl-4 lg:pl-0 space-x-12 lg:space-x-2 lg:flex-col space-y-2 items-center rounded-xl cursor-pointer duration-500 py-3 lg:py-3`}
         >
           <div className={"bg-opacity-80 font-semibold text-grey05 px-4 py-4"}>
-            <Home />
+            <Wallet />
           </div>
 
           <h2 className={`text-base lg:text-xs "text-pry-modal font-semibold`}>
@@ -37,7 +42,7 @@ const Route = () => {
           className={`flex justify-start lg:justify-center pl-4 lg:pl-0 space-x-12 lg:space-x-2 lg:flex-col space-y-2 items-center rounded-xl cursor-pointer duration-500 py-3 lg:py-3`}
         >
           <div className={"bg-opacity-80 font-semibold text-grey05 px-4 py-4"}>
-            <Home />
+            <Credit />
           </div>
 
           <h2 className={`text-base lg:text-xs "text-pry-modal font-semibold`}>
@@ -51,7 +56,7 @@ const Route = () => {
           className={`flex justify-start lg:justify-center pl-4 lg:pl-0 space-x-12 lg:space-x-2 lg:flex-col space-y-2 items-center rounded-xl cursor-pointer duration-500 py-3 lg:py-3`}
         >
           <div className={"bg-opacity-80 font-semibold text-grey05 px-4 py-4"}>
-            <Home />
+            <Beneficiaries />
           </div>
 
           <h2 className={`text-base lg:text-xs "text-pry-modal font-semibold`}>
@@ -65,7 +70,7 @@ const Route = () => {
           className={`flex justify-start lg:justify-center pl-4 lg:pl-0 space-x-12 lg:space-x-2 lg:flex-col space-y-2 items-center rounded-xl cursor-pointer duration-500 py-3 lg:py-3`}
         >
           <div className={"bg-opacity-80 font-semibold text-grey05 px-4 py-4"}>
-            <Home />
+            <Stations />
           </div>
 
           <h2 className={`text-base lg:text-xs "text-pry-modal font-semibold`}>
@@ -79,7 +84,7 @@ const Route = () => {
           className={`flex justify-start lg:justify-center pl-4 lg:pl-0 space-x-12 lg:space-x-2 lg:flex-col space-y-2 items-center rounded-xl cursor-pointer duration-500 py-3 lg:py-3`}
         >
           <div className={"bg-opacity-80 font-semibold text-grey05 px-4 py-4"}>
-            <Home />
+            <UserStats />
           </div>
 
           <h2 className={`text-base lg:text-xs "text-pry-modal font-semibold`}>

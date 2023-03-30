@@ -5,9 +5,23 @@ import Logo from "../svg/Logo";
 import Home from "../svg/Home";
 import Route from "./Route";
 import StatCard from "./statsCards/SingleStatCard";
-import SingleCreditCard from "./creditCards/SingleWalletCard";
+import { useGetUserDashboardQuery } from "../../api/services";
+import SingleWalletCard from "./creditCards/SingleWalletCard";
+
+import SingleCreditCard from "./creditCards/CreditCard";
+import Fuel from "../svg/FuelIcon";
+import CreditSvg from "../svg/CreditSvg";
+import AddIcon from "../svg/AddIcon";
+import Location from "../svg/Location";
+import { count } from "console";
+import Notification from "../svg/Notification";
+import Profile from "../svg/Profile";
 
 const DesktopView = () => {
+  const { data, error, isLoading } = useGetUserDashboardQuery(13);
+
+  console.log("data >>>>", data);
+
   return (
     <>
       <div>
@@ -27,10 +41,10 @@ const DesktopView = () => {
               </div>
               <div className="flex">
                 <div className="pr-10">
-                  <Home />
+                  <Notification />
                 </div>
                 <div>
-                  <Home />
+                  <Profile />
                 </div>
               </div>
             </div>
@@ -47,14 +61,27 @@ const DesktopView = () => {
             {/* adjusted py-6 lg:py-10 */}
             <div className={`container mx-auto px-4 py-6 h-full`}>
               <div className="pt-4 grid grid-cols-4 grid-gap-12">
-                <StatCard />
-                <StatCard />
-                <StatCard />
-                <StatCard />
+                <StatCard title="Fuel Purchase" icon={<Fuel />} count={"24"} />
+                <StatCard
+                  title="Total Purchases"
+                  icon={<CreditSvg />}
+                  count={"N155k"}
+                />
+                <StatCard
+                  title="Beneficiaries"
+                  icon={<AddIcon />}
+                  count={"5"}
+                />
+                <StatCard
+                  title="Filling Stations"
+                  icon={<Location />}
+                  count={"5"}
+                />
               </div>
 
-              <div className="mt-8">
+              <div className="mt-8 grid grid-cols-2">
                 {/* Credit Cards */}
+                <SingleWalletCard />
                 <SingleCreditCard />
               </div>
             </div>

@@ -1,4 +1,4 @@
-const SingleCreditCard = () => {
+const SingleWalletCard = () => {
   return (
     <div className="max-w-[500px]">
       <div className="flex justify-between py-3">
@@ -39,4 +39,4 @@ const SingleCreditCard = () => {
   );
 };
 
-export default SingleCreditCard;
+export default SingleWalletCard;
