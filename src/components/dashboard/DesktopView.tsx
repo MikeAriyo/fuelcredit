@@ -5,6 +5,7 @@ import Logo from "../svg/Logo";
 import Home from "../svg/Home";
 import Route from "./Route";
 import StatCard from "./statsCards/SingleStatCard";
+import SingleCreditCard from "./creditCards/SingleWalletCard";
 
 const DesktopView = () => {
   return (
@@ -50,6 +51,11 @@ const DesktopView = () => {
                 <StatCard />
                 <StatCard />
                 <StatCard />
+              </div>
+
+              <div className="mt-8">
+                {/* Credit Cards */}
+                <SingleCreditCard />
               </div>
             </div>
           </div>
