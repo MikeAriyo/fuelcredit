@@ -1,8 +1,56 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import Swal from "sweetalert2";
+import { useRegisterMutation } from "../../api/services";
+import { useNavigate } from "react-router-dom";
 import NavBar from "../nav/NavBar";
 import UserIcon from "../svg/UserIcon";
 
 const Register = () => {
+  const [register] = useRegisterMutation();
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    mobileNumber: "",
+    NIN: "",
+    password: "",
+    email: "",
+    category: "Bike Kwik",
+  });
+
+  const handleChange = (e: any) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const handleRegister = async (e: any) => {
+    e.preventDefault();
+    console.log("clicked");
+    try {
+      // highlight-next-line
+
+      let k = register(formData).unwrap();
+      k.then((res) => {
+        // successful login
+        Swal.fire({
+          title: "Success!",
+          text: "You have successfully logged in",
+          icon: "success",
+          confirmButtonText: "Ok",
+        }).then((result) => {
+          if (result.isConfirmed || result.isDenied || result.isDismissed) {
+            navigate("/login");
+          }
+        });
+      });
+      k.catch((err) => {
+        // error
+      });
+    } catch (err) {}
+  };
+
+  console.log(formData);
   return (
     <div>
       <NavBar />
@@ -35,6 +83,7 @@ const Register = () => {
                 id="firstName"
                 className="bg-white border border-gray-300 text-[#c7c9c7] sm:text-sm rounded-lg block w-full p-2.5 outline-none"
                 placeholder="Enter First Name"
+                onChange={handleChange}
               />
             </div>
 
@@ -51,6 +100,7 @@ const Register = () => {
                 id="lastName"
                 className="bg-white border border-gray-300 text-[#c7c9c7] sm:text-sm rounded-lg block w-full p-2.5 outline-none"
                 placeholder="Enter Last Name"
+                onChange={handleChange}
               />
             </div>
 
@@ -63,10 +113,11 @@ const Register = () => {
               </label>
               <input
                 type="phone"
-                name="phone"
+                name="mobileNumber"
                 id="phone"
                 className="bg-white border border-gray-300 text-[#c7c9c7] sm:text-sm rounded-lg block w-full p-2.5 outline-none"
                 placeholder="Enter Phone Number"
+                onChange={handleChange}
               />
             </div>
 
@@ -83,6 +134,7 @@ const Register = () => {
                 id="NIN"
                 className="bg-white border border-gray-300 text-[#c7c9c7] sm:text-sm rounded-lg block w-full p-2.5 outline-none"
                 placeholder="Enter NIN"
+                onChange={handleChange}
               />
             </div>
 
@@ -99,6 +151,7 @@ const Register = () => {
                 id="email"
                 className="bg-white border border-gray-300 text-[#c7c9c7] sm:text-sm rounded-lg block w-full p-2.5 outline-none"
                 placeholder="Enter Email"
+                onChange={handleChange}
               />
             </div>
             <div>
@@ -114,6 +167,7 @@ const Register = () => {
                 id="password"
                 placeholder="••••••••"
                 className="bg-white border border-gray-300 text-[#c7c9c7] sm:text-sm rounded-lg block w-full p-2.5 outline-none"
+                onChange={handleChange}
               />
             </div>
 
@@ -123,8 +177,8 @@ const Register = () => {
               <span className="text-[#47b518]">Privacy Policy</span>
             </p>
             <button
-              type="submit"
               className="w-full text-white bg-[#47b518]  font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+              onClick={handleRegister}
             >
               Create my account
             </button>

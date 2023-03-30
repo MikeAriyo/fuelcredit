@@ -1,8 +1,71 @@
 import NavBar from "../nav/NavBar";
 import LoginIcon from "../svg/LoginIcon";
+import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { useLoginMutation } from "../../api/services";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const Login = () => {
+  const [login] = useLoginMutation();
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    mobileNumber: "",
+    password: "",
+  });
+
+  const handleChange = (e: any) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleLogin = async (e: any) => {
+    e.preventDefault();
+    console.log("clicked");
+    try {
+      // highlight-next-line
+
+      let k = login(formData).unwrap();
+      k.then((res: any) => {
+        console.log("response >>>>", res);
+        const userDetails = {
+          token: res?.access_token,
+          userId: res?.id,
+          bvnverify: res?.bvnverify,
+          monoverify: res?.monoverify,
+          role: res?.role,
+          token_type: res?.token_type,
+        };
+        window.localStorage.setItem("userDetails", JSON.stringify(userDetails));
+        // successful login
+        Swal.fire({
+          title: "Success!",
+          text: "You have successfully logged in",
+          icon: "success",
+          confirmButtonText: "Ok",
+        }).then((result: any) => {
+          if (result.isConfirmed || result.isDenied || result.isDismissed) {
+            //navigate("/login");
+          }
+        });
+      });
+      k.catch((err) => {
+        Swal.fire({
+          title: "Error",
+          text: "Please verify your details and retry",
+          icon: "error",
+          confirmButtonText: "Ok",
+        }).then((result: any) => {
+          if (result.isConfirmed || result.isDenied || result.isDismissed) {
+            //navigate("/login");
+          }
+        });
+      });
+    } catch (err) {}
+  };
+
   return (
     <div>
       <NavBar />
@@ -21,10 +84,11 @@ const Login = () => {
               </label>
               <input
                 type="phone"
-                name="email"
+                name="mobileNumber"
                 id="email"
                 className="bg-white border border-gray-300 text-[#c7c9c7] sm:text-sm rounded-lg block w-full p-2.5 outline-none"
                 placeholder="Enter 11-digit phone number"
+                onChange={handleChange}
               />
             </div>
             <div>
@@ -40,11 +104,12 @@ const Login = () => {
                 id="password"
                 placeholder="••••••••"
                 className="bg-white border border-gray-300 text-[#c7c9c7] sm:text-sm rounded-lg block w-full p-2.5 outline-none"
+                onChange={handleChange}
               />
             </div>
             <button
-              type="submit"
               className="w-full text-white bg-[#47b518]  font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+              onClick={handleLogin}
             >
               Login
             </button>
