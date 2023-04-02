@@ -9,10 +9,6 @@ import Profile from "../svg/Profile";
 import Contents from "./Contents";
 
 const DesktopView = () => {
-  const { data, error, isLoading } = useGetUserDashboardQuery(27);
-
-  console.log("data >>>>", data);
-
   return (
     <>
       <div>

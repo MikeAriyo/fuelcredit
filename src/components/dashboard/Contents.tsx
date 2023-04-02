@@ -1,3 +1,4 @@
+import { useGetUserDashboardQuery } from "../../api/services";
 import AddIcon from "../svg/AddIcon";
 import CreditSvg from "../svg/CreditSvg";
 import Fuel from "../svg/FuelIcon";
@@ -7,6 +8,9 @@ import SingleWalletCard from "./creditCards/SingleWalletCard";
 import StatCard from "./statsCards/SingleStatCard";
 
 const Contents = () => {
+  const { data, error, isLoading } = useGetUserDashboardQuery(27);
+
+  console.log("data >>>>", data);
   return (
     <div className="w-full main-content h-scren">
       {/* adjusted py-6 lg:py-10 */}
