@@ -8,10 +8,10 @@ import StatCard from "./statsCards/SingleStatCard";
 
 const Contents = () => {
   return (
-    <div className="w-full main-content h-scren overflow-y-scroll">
+    <div className="w-full main-content h-scren">
       {/* adjusted py-6 lg:py-10 */}
       <div className={`container mx-auto px-4 py-6 h-full`}>
-        <div className="pt-4 grid grid-cols-4 grid-gap-12">
+        <div className="pt-4 grid grid-cols-2 grid-gap-24 md:grid-cols-4 md:grid-gap-12">
           <StatCard title="Fuel Purchase" icon={<Fuel />} count={"24"} />
           <StatCard
             title="Total Purchases"
@@ -22,7 +22,7 @@ const Contents = () => {
           <StatCard title="Filling Stations" icon={<Location />} count={"5"} />
         </div>
 
-        <div className="mt-8 grid grid-cols-2">
+        <div className="mt-8 md:grid md:grid-cols-2 mb-4">
           {/* Credit Cards */}
           <SingleWalletCard />
           <SingleCreditCard />
