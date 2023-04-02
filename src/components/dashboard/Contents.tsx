@@ -9,7 +9,7 @@ import StatCard from "./statsCards/SingleStatCard";
 
 const Contents = () => {
   const userDetails = JSON.parse(localStorage.getItem("userDetails") as any);
-  const userId = userDetails?.id;
+  const userId = userDetails?.userId;
   const { data, error, isLoading } = useGetUserDashboardQuery(userId);
 
   console.log("data >>>>", data);
@@ -33,12 +33,16 @@ const Contents = () => {
             icon={<AddIcon />}
             count={data?.beneficiary}
           />
-          <StatCard title="Filling Stations" icon={<Location />} count={data?.filling_station_count} />
+          <StatCard
+            title="Filling Stations"
+            icon={<Location />}
+            count={data?.filling_station_count}
+          />
         </div>
 
         <div className="mt-8 md:grid md:grid-cols-2 mb-4">
           {/* Credit Cards */}
-          <SingleWalletCard />
+          <SingleWalletCard balance={data?.balance} station={data?.station} />
           <SingleCreditCard />
         </div>
       </div>

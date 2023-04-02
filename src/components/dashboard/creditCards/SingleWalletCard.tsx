@@ -1,4 +1,9 @@
-const SingleWalletCard = () => {
+interface walletProps {
+  balance: string;
+  station: string;
+}
+
+const SingleWalletCard = ({ balance, station }: walletProps) => {
   return (
     <div className="max-w-[500px]">
       <div className="flex justify-between py-3">
@@ -10,7 +15,7 @@ const SingleWalletCard = () => {
         <div className="flex justify-between">
           <div>
             <p className="text-[#85928e] text-[16px]">FuelCredit balance</p>
-            <p className="pt-3 font-semibold text-[20px]">N95,520.00</p>
+            <p className="pt-3 font-semibold text-[20px]">N{balance}</p>
           </div>
 
           <button className="w-20px text-white bg-[#47b518] font-medium rounded-lg text-sm px-5 text-center">
@@ -27,7 +32,7 @@ const SingleWalletCard = () => {
 
           <div className="flex justify-between mt-4">
             <p className="text-[14px]">Total Filling Stations</p>
-            <p className="text-sm text-[#31581c]">-N5,000</p>
+            <p className="text-sm text-[#31581c]">{station}</p>
           </div>
 
           <div className="mt-4">
