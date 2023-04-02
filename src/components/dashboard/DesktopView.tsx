@@ -1,21 +1,12 @@
-import React, { useEffect, useState } from "react";
 import style from "../../styles/Sidebar.module.css";
 import { Link } from "react-router-dom";
 import Logo from "../svg/Logo";
-import Home from "../svg/Home";
 import Route from "./Route";
-import StatCard from "./statsCards/SingleStatCard";
 import { useGetUserDashboardQuery } from "../../api/services";
-import SingleWalletCard from "./creditCards/SingleWalletCard";
-
-import SingleCreditCard from "./creditCards/CreditCard";
-import Fuel from "../svg/FuelIcon";
-import CreditSvg from "../svg/CreditSvg";
-import AddIcon from "../svg/AddIcon";
-import Location from "../svg/Location";
-import { count } from "console";
+import { motion } from "framer-motion";
 import Notification from "../svg/Notification";
 import Profile from "../svg/Profile";
+import Contents from "./Contents";
 
 const DesktopView = () => {
   const { data, error, isLoading } = useGetUserDashboardQuery(27);
@@ -24,7 +15,7 @@ const DesktopView = () => {
 
   return (
     <>
-      <div> 
+      <div>
         <div className="fixed h-16 w-screen m-0 z-10 px-8">
           <div className="flex m-0 bg-white py-3 border-b border-[#E5EFFF]">
             <div className="w-64 lg:w-72 grid">
@@ -56,36 +47,24 @@ const DesktopView = () => {
           >
             <Route />
           </div>
-          {/* removed pb-28 */}
-          <div className="w-full main-content h-scren overflow-y-scroll">
-            {/* adjusted py-6 lg:py-10 */}
-            <div className={`container mx-auto px-4 py-6 h-full`}>
-              <div className="pt-4 grid grid-cols-4 grid-gap-12">
-                <StatCard title="Fuel Purchase" icon={<Fuel />} count={"24"} />
-                <StatCard
-                  title="Total Purchases"
-                  icon={<CreditSvg />}
-                  count={"N155k"}
-                />
-                <StatCard
-                  title="Beneficiaries"
-                  icon={<AddIcon />}
-                  count={"5"}
-                />
-                <StatCard
-                  title="Filling Stations"
-                  icon={<Location />}
-                  count={"5"}
-                />
-              </div>
 
-              <div className="mt-8 grid grid-cols-2">
-                {/* Credit Cards */}
-                <SingleWalletCard />
-                <SingleCreditCard />
-              </div>
-            </div>
-          </div>
+          <motion.div
+            key={""}
+            initial="initial"
+            animate="animate"
+            variants={{
+              initial: {
+                opacity: 0,
+              },
+              animate: {
+                opacity: 1,
+              },
+            }}
+            className="w-full max-w-7xl mx-auto h-full"
+          >
+            <Contents />
+          </motion.div>
+          {/* removed pb-28 */}
         </div>
       </div>
     </>
