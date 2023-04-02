@@ -2,7 +2,7 @@
 interface statsProps {
   title: string;
   icon: any;
-  count: string;
+  count: any;
 }
 
 const StatCard = ({ title, icon, count }: statsProps) => {

@@ -8,7 +8,9 @@ import SingleWalletCard from "./creditCards/SingleWalletCard";
 import StatCard from "./statsCards/SingleStatCard";
 
 const Contents = () => {
-  const { data, error, isLoading } = useGetUserDashboardQuery(27);
+  const userDetails = JSON.parse(localStorage.getItem("userDetails") as any);
+  const userId = userDetails?.id;
+  const { data, error, isLoading } = useGetUserDashboardQuery(userId);
 
   console.log("data >>>>", data);
   return (
@@ -16,7 +18,11 @@ const Contents = () => {
       {/* adjusted py-6 lg:py-10 */}
       <div className={`container mx-auto px-4 py-6 h-full`}>
         <div className="pt-4 grid grid-cols-2 grid-gap-24 md:grid-cols-4 md:grid-gap-12">
-          <StatCard title="Fuel Purchase" icon={<Fuel />} count={"24"} />
+          <StatCard
+            title="Fuel Purchase"
+            icon={<Fuel />}
+            count={data?.count_fuel}
+          />
           <StatCard
             title="Total Purchases"
             icon={<CreditSvg />}
