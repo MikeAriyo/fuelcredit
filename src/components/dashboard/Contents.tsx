@@ -33,7 +33,7 @@ const Contents = () => {
             icon={<AddIcon />}
             count={data?.beneficiary}
           />
-          <StatCard title="Filling Stations" icon={<Location />} count={"5"} />
+          <StatCard title="Filling Stations" icon={<Location />} count={data?.filling_station_count} />
         </div>
 
         <div className="mt-8 md:grid md:grid-cols-2 mb-4">
