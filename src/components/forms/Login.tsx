@@ -40,16 +40,7 @@ const Login = () => {
         };
         window.localStorage.setItem("userDetails", JSON.stringify(userDetails));
         // successful login
-        Swal.fire({
-          title: "Success!",
-          text: "You have successfully logged in",
-          icon: "success",
-          confirmButtonText: "Ok",
-        }).then((result: any) => {
-          if (result.isConfirmed || result.isDenied || result.isDismissed) {
-            //navigate("/login");
-          }
-        });
+        navigate("/dashboard");
       });
       k.catch((err) => {
         Swal.fire({

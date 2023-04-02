@@ -1,10 +1,13 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
+const userDetails = JSON.parse(localStorage.getItem("userDetails") as any);
+
 const frontendAPIHeader = {
   "content-type": "application/json",
+  authorization: `Bearer ${userDetails?.token}`,
 };
 
-const baseUrl = "http://dev.myfuelcredit.com/api/v1";
+const baseUrl = "https://dev.myfuelcredit.com/api/v1";
 
 const createRequest = (url: any) => ({ url, headers: frontendAPIHeader });
 

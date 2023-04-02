@@ -18,13 +18,13 @@ import Notification from "../svg/Notification";
 import Profile from "../svg/Profile";
 
 const DesktopView = () => {
-  const { data, error, isLoading } = useGetUserDashboardQuery(13);
+  const { data, error, isLoading } = useGetUserDashboardQuery(27);
 
   console.log("data >>>>", data);
 
   return (
     <>
-      <div>
+      <div> 
         <div className="fixed h-16 w-screen m-0 z-10 px-8">
           <div className="flex m-0 bg-white py-3 border-b border-[#E5EFFF]">
             <div className="w-64 lg:w-72 grid">
