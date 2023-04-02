@@ -26,9 +26,13 @@ const Contents = () => {
           <StatCard
             title="Total Purchases"
             icon={<CreditSvg />}
-            count={data?.total_fuelS}
+            count={data?.total_fuel}
           />
-          <StatCard title="Beneficiaries" icon={<AddIcon />} count={"5"} />
+          <StatCard
+            title="Beneficiaries"
+            icon={<AddIcon />}
+            count={data?.beneficiary}
+          />
           <StatCard title="Filling Stations" icon={<Location />} count={"5"} />
         </div>
 
