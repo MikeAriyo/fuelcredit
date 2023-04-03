@@ -43,7 +43,11 @@ const Contents = () => {
         <div className="mt-8 md:grid md:grid-cols-2 mb-4">
           {/* Credit Cards */}
           <SingleWalletCard balance={data?.balance} station={data?.station} />
-          <SingleCreditCard />
+          <SingleCreditCard
+            credit={data?.credit}
+            limit={data?.creditDetails?.limit}
+            expiry={data?.creditDetails?.expire}
+          />
         </div>
       </div>
     </div>
