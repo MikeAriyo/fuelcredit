@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const Login = () => {
+  const [formActive, setFormActive] = useState(false);
   const [login] = useLoginMutation();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -25,6 +26,7 @@ const Login = () => {
     e.preventDefault();
     console.log("clicked");
     try {
+      setFormActive(true);
       // highlight-next-line
 
       let k = login(formData).unwrap();
@@ -54,7 +56,10 @@ const Login = () => {
           }
         });
       });
-    } catch (err) {}
+    } catch (err) {
+    } finally {
+      setFormActive(false);
+    }
   };
 
   return (
@@ -102,7 +107,7 @@ const Login = () => {
               className="w-full text-white bg-[#47b518]  font-medium rounded-lg text-sm px-5 py-2.5 text-center"
               onClick={handleLogin}
             >
-              Login
+              {formActive ? "()" : "Login"}
             </button>
             <div className="text-sm font-medium text-gray-900 text-center">
               New User?{" "}
