@@ -30,7 +30,7 @@ const SingleCreditCard = ({ credit, limit, expiry }: creditProps) => {
             Request Credit
           </button>
           <p className="text-[#85928e] mt-2 pl-2 md:pl-0">
-            Repayment due in <span className="text-black">{expiry} days</span>
+            Repayment due in <span className="text-black">{expiry} day</span>
           </p>
         </div>
       </div>

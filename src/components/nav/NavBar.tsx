@@ -2,7 +2,7 @@ import Logo from "../svg/Logo";
 
 const NavBar = () => {
   return (
-    <div className="w-full flex justify-between p-4">
+    <div className="w-full md:flex justify-between p-4 hidden md:block">
       <div className="flex">
         <div>
           <Logo />

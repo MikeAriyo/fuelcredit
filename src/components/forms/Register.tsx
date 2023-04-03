@@ -54,7 +54,7 @@ const Register = () => {
   return (
     <div>
       <NavBar />
-      <div className="mx-auto flex items-center justify-center flex-col mt-16 p-8 bg-[#f9f8f9] w-1/3 rounded-2xl">
+      <div className="mx-auto flex items-center justify-center flex-col mt-16 p-8 bg-white md:bg-[#f9f8f9] sm:1/2 md:w-1/3 rounded-2xl">
         <div className="flex">
           <div className="pr-3">
             <UserIcon />
