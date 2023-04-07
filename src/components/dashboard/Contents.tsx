@@ -12,7 +12,6 @@ const Contents = () => {
   const userId = userDetails?.userId;
   const { data, error, isLoading } = useGetUserDashboardQuery(userId);
 
-  console.log("data >>>>", data);
   return (
     <div className="w-full main-content h-scren">
       {/* adjusted py-6 lg:py-10 */}
@@ -42,7 +41,10 @@ const Contents = () => {
 
         <div className="mt-8 md:grid md:grid-cols-2 mb-4">
           {/* Credit Cards */}
-          <SingleWalletCard balance={data?.balance} station={data?.station} />
+          <SingleWalletCard
+            balance={data?.balance}
+            station={data?.station?.amount}
+          />
           <SingleCreditCard
             credit={data?.credit}
             limit={data?.creditDetails?.limit}

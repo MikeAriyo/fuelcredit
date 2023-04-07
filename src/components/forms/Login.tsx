@@ -10,6 +10,7 @@ const Login = () => {
   const [formActive, setFormActive] = useState(false);
   const [login] = useLoginMutation();
   const navigate = useNavigate();
+  
   const [formData, setFormData] = useState({
     mobileNumber: "",
     password: "",
@@ -65,7 +66,7 @@ const Login = () => {
   return (
     <div>
       <NavBar />
-      <div className="mx-auto flex items-center justify-center flex-col mt-44 md:mt-16 p-8 bg-white md:bg-[#f9f8f9] sm:1/2 md:w-1/3 rounded-2xl">
+      <div className="mx-auto flex items-center justify-center flex-col mt-44 md:mt-16 p-8 bg-white md:bg-[#f9f8f9] sm:1/2 md:w-1/3 rounded-2xl"> 
         <LoginIcon />
         <p className="text-bold text-[#1f261e] pt-4">Log In</p>
 

@@ -31,7 +31,7 @@ const Register = () => {
       // highlight-next-line
 
       let k = register(formData).unwrap();
-      k.then((res) => {
+      k.then((res : any) => {
         // successful login
         Swal.fire({
           title: "Success!",
@@ -40,11 +40,11 @@ const Register = () => {
           confirmButtonText: "Ok",
         }).then((result) => {
           if (result.isConfirmed || result.isDenied || result.isDismissed) {
-            navigate("/login");
+            navigate("/");
           }
         });
       });
-      k.catch((err) => {
+      k.catch((err : any) => {
         // error
       });
     } catch (err) {}
